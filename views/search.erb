@@ -1,0 +1,22 @@
+<div class="header">
+  <h1>Search</h1>
+</div>
+
+<h2 class="content-subhead">Search</h2>
+<form action="/search" method="get">
+  <input name="query" value="<%= params[:query]%>">
+  <button type="submit">Search</button>
+</form>
+
+<p>Results for:<%= params[:query]%></p>
+<% if @found%>
+  <%@found.each do |index| %>
+  <ul>
+    <li>
+      <a href=<%="/chapters/chp#{index}"%>><%=@titles[index]%></a>
+    </li>
+  </ul>
+  <%end%>
+<%else%>
+  <p>no,results were found.</p>
+<%end%>
